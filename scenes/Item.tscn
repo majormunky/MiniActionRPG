@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/Weapon/WoodenSword.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Item.gd" type="Script" id=2]
+
+[node name="Item" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 32.0
+margin_bottom = 32.0
+text = "99"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -127,6 +127,7 @@ position = Vector2( 647.765, 198.818 )
 scale = Vector2( 2, 2 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="Dialog" parent="." instance=ExtResource( 8 )]
 visible = false

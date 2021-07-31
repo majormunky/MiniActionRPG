@@ -14,11 +14,6 @@ onready var closed_sprite = $ClosedSprite
 
 signal chest_opened(item)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	item = SwordClass.instance()
-	item.item_name = "Test"
-
 func update_sprite():
 	match state:
 		OPEN:

@@ -16,13 +16,18 @@ func _ready():
 
 
 func update_items():
-	for item in PlayerData.get_inventory():
-		print(item.name)
-		print(item.get_node("TextureRect").texture)
-		var slot = get_node("HBoxContainer/GridContainer/Slot1")
-		slot.put_into_slot(item)
-	# var test_item = PlayerData.player_data["inventory"][0]
 	print("updating items")
+	for item in PlayerData.get_inventory():
+		if item in itemsInSlots:
+			print("We detected an item already in a slot")
+			continue
+		for slot in get_node("HBoxContainer/GridContainer").get_children():
+			if slot.item:
+				print("Slot already has item")
+				print(slot.item == item)
+			else:
+				slot.put_into_slot(item)
+				itemsInSlots.append(item)
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):

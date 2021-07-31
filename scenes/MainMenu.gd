@@ -19,15 +19,18 @@ func update_items():
 	print("updating items")
 	for item in PlayerData.get_inventory():
 		if item in itemsInSlots:
-			print("We detected an item already in a slot")
+			print("We detected an item already in a slot, skipping")
 			continue
+		print("Finding next available slot")
 		for slot in get_node("HBoxContainer/GridContainer").get_children():
 			if slot.item:
-				print("Slot already has item")
-				print(slot.item == item)
+				print("Slot ", slot.name, " already has item")
 			else:
+				print("Found an empty slot: ", slot.name)
 				slot.put_into_slot(item)
 				itemsInSlots.append(item)
+				return
+
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):

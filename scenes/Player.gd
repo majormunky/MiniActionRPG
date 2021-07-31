@@ -64,9 +64,6 @@ func move_state(delta):
 		emit_signal("player_interacted")
 		yield(get_tree().create_timer(0.1), "timeout")
 		interact_hitbox_shape.disabled = true
-		
-		
-	
 	move_and_collide(velocity)
 
 

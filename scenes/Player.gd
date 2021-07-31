@@ -18,6 +18,8 @@ enum {
 }
 var state = MOVE
 
+signal player_interacted
+
 func _ready():
 	anim_tree.active = true
 
@@ -59,8 +61,11 @@ func move_state(delta):
 	if Input.is_action_just_pressed("interact"):
 		print("Interact!")
 		interact_hitbox_shape.disabled = false
+		emit_signal("player_interacted")
 		yield(get_tree().create_timer(0.1), "timeout")
 		interact_hitbox_shape.disabled = true
+		
+		
 	
 	move_and_collide(velocity)
 

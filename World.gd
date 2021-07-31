@@ -24,6 +24,7 @@ func _on_Chest_chest_opened(item):
 	if item == null:
 		chest_text = "Chest is empty!"
 	else:
+		print(item.item_name)
 		chest_text = "Chest contains: " + str(item.item_name)
 		PlayerData.add_item(item)
 
@@ -32,7 +33,16 @@ func _on_Chest_chest_opened(item):
 	
 
 
+
+
+
 func _on_MainMenu_about_to_show():
 	pass
 	# var test_item = PlayerData.player_data["inventory"][0]
 	#main_menu.find_node("Panel/MarginContainer/VBoxContainer/GridContainer/Slot1/Icon")
+
+
+func _on_Player_player_interacted():
+	if dialog and dialog.visible:
+		dialog.visible = false
+			

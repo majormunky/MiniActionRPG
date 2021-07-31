@@ -28,5 +28,6 @@ func remove_item_quantity(amount):
 	item_quantity -= amount
 	update_label_text(item_quantity)
 
+
 func update_label_text(text):
 	label.text = String(text)

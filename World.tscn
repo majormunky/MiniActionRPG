@@ -45,4 +45,5 @@ tile_data = PoolIntArray( 131082, 6, 0, 131091, 6, 0, 720905, 6, 0, 720921, 6, 0
 [node name="Dialog" parent="." instance=ExtResource( 8 )]
 
 [connection signal="chest_opened" from="Items/Chest" to="." method="_on_Chest_chest_opened"]
+[connection signal="player_interacted" from="Player" to="." method="_on_Player_player_interacted"]
 [connection signal="about_to_show" from="MainMenu" to="." method="_on_MainMenu_about_to_show"]

@@ -7,6 +7,7 @@ var item_quantity
 
 
 func _ready():
+	print("Item _ready, making wooden sword")
 	item_name = "Wooden Sword"
 	var item_data = GameData.item_data[item_name]
 	item_image.texture = load("res://assets/images/" + item_data["category"] + "/" + item_data["image_name"])

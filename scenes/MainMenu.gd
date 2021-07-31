@@ -5,6 +5,7 @@ onready var inventory_slots = $HBoxContainer/GridContainer
 const SlotClass = preload("res://scenes/Slot.gd")
 var holding_item = null
 var selected_slot = 0
+var itemsInSlots = []
 
 
 func _ready():
@@ -12,6 +13,16 @@ func _ready():
 		inv_slot.connect("gui_input", self, "slot_gui_input", [inv_slot])
 		#if inv_slot.get_index() == selected_slot:
 		#	inv_slot.select_slot()
+
+
+func update_items():
+	for item in PlayerData.get_inventory():
+		print(item.name)
+		print(item.get_node("TextureRect").texture)
+		var slot = get_node("HBoxContainer/GridContainer/Slot1")
+		slot.put_into_slot(item)
+	# var test_item = PlayerData.player_data["inventory"][0]
+	print("updating items")
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):

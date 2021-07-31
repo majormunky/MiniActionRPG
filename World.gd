@@ -30,14 +30,11 @@ func _on_Chest_chest_opened(item):
 
 	dialog.set_dialog_text(chest_text)
 	dialog.popup()
-	
-
-
-
 
 
 func _on_MainMenu_about_to_show():
-	pass
+	print("showing main menu")
+	main_menu.update_items()
 	# var test_item = PlayerData.player_data["inventory"][0]
 	#main_menu.find_node("Panel/MarginContainer/VBoxContainer/GridContainer/Slot1/Icon")
 

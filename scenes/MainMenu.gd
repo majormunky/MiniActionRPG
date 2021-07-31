@@ -27,7 +27,7 @@ func update_items():
 				print("Slot ", slot.name, " already has item")
 			else:
 				print("Found an empty slot: ", slot.name, " for item ", item.name)
-				slot.put_into_slot(item)
+				slot.set_item(item)
 				itemsInSlots.append(item)
 				break
 

@@ -40,6 +40,13 @@ func pick_from_slot():
 	refresh_style()
 
 
+func set_item(new_item):
+	item = new_item
+	item.position = Vector2(0, 0)
+	add_child(item)
+	refresh_style()
+
+
 func put_into_slot(new_item):
 	item = new_item
 	item.position = Vector2(0, 0)

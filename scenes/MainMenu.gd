@@ -10,8 +10,8 @@ var selected_slot = 0
 func _ready():
 	for inv_slot in inventory_slots.get_children():
 		inv_slot.connect("gui_input", self, "slot_gui_input", [inv_slot])
-		if inv_slot.get_index() == selected_slot:
-			inv_slot.select_slot()
+		#if inv_slot.get_index() == selected_slot:
+		#	inv_slot.select_slot()
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):

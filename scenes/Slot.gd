@@ -20,10 +20,12 @@ func _ready():
 	default_style.texture = default_tex
 	empty_style.texture = empty_tex
 	selected_style.texture = selected_tex
-		
-	if randi() % 2 == 0:
-		item = test_item.instance()
-		add_child(item)
+	
+	#
+	# if randi() % 2 == 0:
+	#	item = test_item.instance()
+	#	add_child(item)
+	
 	refresh_style()
 
 func refresh_style():

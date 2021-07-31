@@ -20,5 +20,5 @@ jobs:
           CHANNEL: HTML5
           ITCH_GAME: MiniRPG
           ITCH_USER: majormunky
-          PACKAGE: game.zip
+          PACKAGE: HTML5.zip
           VERSION: ${{ steps.download-web.outputs.version }}

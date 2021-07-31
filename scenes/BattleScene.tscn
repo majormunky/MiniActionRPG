@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/fight/monsters/monster_bird1.png" type="Texture" id=1]
+
+[node name="BattleScene" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 800.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+margin_right = 1280.0
+margin_bottom = 800.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FightArea" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 500 )
+
+[node name="PlayerSide" type="Panel" parent="MarginContainer/Panel/VBoxContainer/FightArea"]
+margin_right = 500.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 0 )
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/Panel/VBoxContainer/FightArea/PlayerSide"]
+
+[node name="EnemySide" type="Panel" parent="MarginContainer/Panel/VBoxContainer/FightArea"]
+margin_left = 780.0
+margin_right = 1280.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 500, 0 )
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/Panel/VBoxContainer/FightArea/EnemySide"]
+position = Vector2( 244, 224 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 120, 120 )
+
+[node name="InfoArea" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+margin_top = 504.0
+margin_right = 1280.0
+margin_bottom = 804.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="PlayerInfo" type="Panel" parent="MarginContainer/Panel/VBoxContainer/InfoArea"]
+margin_bottom = 300.0
+
+[node name="EnemyInfo" type="Panel" parent="MarginContainer/Panel/VBoxContainer/InfoArea"]
+margin_left = 4.0
+margin_right = 4.0
+margin_bottom = 300.0

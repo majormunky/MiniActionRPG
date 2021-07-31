@@ -109,15 +109,76 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayersList" type="ItemList" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer"]
+[node name="PlayersList" type="VBoxContainer" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer"]
 margin_right = 360.0
 margin_bottom = 240.0
-rect_min_size = Vector2( 360, 240 )
-custom_constants/vseparation = 10
-custom_constants/line_separation = 10
-custom_constants/hseparation = 10
-max_text_lines = 4
-auto_height = true
+rect_min_size = Vector2( 360, 0 )
+custom_constants/separation = 18
+
+[node name="PlayerBar" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList"]
+margin_right = 360.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar"]
+margin_right = 32.0
+margin_bottom = 14.0
+text = "Torin"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar"]
+margin_left = 48.0
+margin_right = 348.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 300, 0 )
+value = 100.0
+
+[node name="PlayerBar2" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList"]
+margin_top = 32.0
+margin_right = 360.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar2"]
+margin_right = 25.0
+margin_bottom = 14.0
+text = "Bob	"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar2"]
+margin_left = 48.0
+margin_right = 348.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 300, 0 )
+value = 100.0
+
+[node name="PlayerBar3" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList"]
+margin_top = 64.0
+margin_right = 360.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar3"]
+margin_right = 25.0
+margin_bottom = 14.0
+text = "Dan"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar3"]
+margin_left = 48.0
+margin_right = 348.0
+margin_bottom = 14.0
+value = 100.0
+
+[node name="PlayerBar4" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList"]
+margin_top = 96.0
+margin_right = 360.0
+margin_bottom = 110.0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar4"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Robert"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer/PlayersList/PlayerBar4"]
+margin_left = 48.0
+margin_right = 348.0
+margin_bottom = 14.0
+value = 100.0
 
 [node name="EnemiesList" type="ItemList" parent="MarginContainer/Panel/VBoxContainer/InfoArea/FightInfo/HBoxContainer"]
 margin_left = 392.0

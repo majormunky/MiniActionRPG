@@ -4,6 +4,7 @@ onready var main_menu = $MainMenu
 onready var dialog = $Dialog
 onready var player = $Player
 onready var Item = preload("res://scenes/Item.tscn")
+onready var Chest = preload("res://scenes/Chest.tscn")
 
 onready var swordArt = load("res://assets/images/Weapon/WoodenSword.png")
 onready var armorArt = load("res://assets/images/armor/armor_06.png")
@@ -26,15 +27,29 @@ func _process(_delta):
 func setup_chests():
 	var sword = Item.instance()
 	sword.set_item("Wooden Sword")
-	get_node("Items/Chest").item = sword
+	
+	var chest1 = Chest.instance()
+	chest1.position.x = 500
+	chest1.position.y = 300
+	chest1.item = sword
+	chest1.connect("chest_opened", self, "_on_Chest_chest_opened")
+	
+	get_node("Items").add_child(chest1)
 	
 	var armor = Item.instance()
 	armor.set_item("Leather Armor")
-	get_node("Items/Chest2").item = armor
+	
+	var chest2 = Chest.instance()
+	chest2.position.x = 550
+	chest2.position.y = 300
+	chest2.item = armor
+	chest2.connect("chest_opened", self, "_on_Chest_chest_opened")
+	get_node("Items").add_child(chest2)
 	
 	
 
 func _on_Chest_chest_opened(item):
+	print("ON CHEST OPENED", item)
 	var chest_text = null;
 	if item == null:
 		chest_text = "Chest is empty!"

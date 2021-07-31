@@ -7,7 +7,6 @@ enum {
 
 var state = CLOSED
 var item = null
-var SwordClass = preload("res://scenes/Item.tscn")
 
 onready var open_sprite = $OpenSprite
 onready var closed_sprite = $ClosedSprite

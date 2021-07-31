@@ -5,6 +5,7 @@ onready var dialog = $Dialog
 onready var player = $Player
 onready var Item = preload("res://scenes/Item.tscn")
 onready var Chest = preload("res://scenes/Chest.tscn")
+onready var Slime = preload("res://scenes/Slime.tscn")
 
 onready var swordArt = load("res://assets/images/Weapon/WoodenSword.png")
 onready var armorArt = load("res://assets/images/armor/armor_06.png")
@@ -12,6 +13,12 @@ onready var armorArt = load("res://assets/images/armor/armor_06.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setup_chests()
+	
+	var test_slime = Slime.instance()
+	test_slime.position.x = 500
+	test_slime.position.y = 300
+	
+	get_node("Enemies").add_child(test_slime)
 
 
 func _process(_delta):

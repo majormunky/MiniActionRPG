@@ -132,5 +132,7 @@ visible = false
 [node name="Dialog" parent="." instance=ExtResource( 8 )]
 visible = false
 
+[node name="Enemies" type="Node" parent="."]
+
 [connection signal="player_interacted" from="Player" to="." method="_on_Player_player_interacted"]
 [connection signal="about_to_show" from="MainMenu" to="." method="_on_MainMenu_about_to_show"]

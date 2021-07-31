@@ -10,7 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Mini Zelda"
+config/name="MiniRPG"
+config/description="A mini adventure game"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 

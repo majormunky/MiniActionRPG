@@ -3,11 +3,15 @@ extends Node2D
 onready var main_menu = $MainMenu
 onready var dialog = $Dialog
 onready var player = $Player
+onready var Item = preload("res://scenes/Item.tscn")
 
+onready var swordArt = load("res://assets/images/Weapon/WoodenSword.png")
+onready var armorArt = load("res://assets/images/armor/armor_06.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	setup_chests()
+
 
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
@@ -18,6 +22,17 @@ func _process(_delta):
 			get_tree().paused = true
 			main_menu.popup()
 
+
+func setup_chests():
+	var sword = Item.instance()
+	sword.set_item("Wooden Sword")
+	get_node("Items/Chest").item = sword
+	
+	var armor = Item.instance()
+	armor.set_item("Leather Armor")
+	get_node("Items/Chest2").item = armor
+	
+	
 
 func _on_Chest_chest_opened(item):
 	var chest_text = null;
@@ -35,8 +50,6 @@ func _on_Chest_chest_opened(item):
 func _on_MainMenu_about_to_show():
 	print("showing main menu")
 	main_menu.update_items()
-	# var test_item = PlayerData.player_data["inventory"][0]
-	#main_menu.find_node("Panel/MarginContainer/VBoxContainer/GridContainer/Slot1/Icon")
 
 
 func _on_Player_player_interacted():

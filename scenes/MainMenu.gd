@@ -26,11 +26,10 @@ func update_items():
 			if slot.item:
 				print("Slot ", slot.name, " already has item")
 			else:
-				print("Found an empty slot: ", slot.name)
+				print("Found an empty slot: ", slot.name, " for item ", item.name)
 				slot.put_into_slot(item)
 				itemsInSlots.append(item)
-				return
-
+				break
 
 
 func slot_gui_input(event: InputEvent, slot: SlotClass):

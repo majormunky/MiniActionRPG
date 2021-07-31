@@ -1,16 +1,14 @@
 extends Node2D
 
-onready var item_image = $TextureRect
+onready var texture_rect = $TextureRect
 onready var label = $Label
 var item_name
 var item_quantity
 
 
 func _ready():
-	print("Item _ready, making wooden sword")
-	item_name = "Wooden Sword"
 	var item_data = GameData.item_data[item_name]
-	item_image.texture = load("res://assets/images/" + item_data["category"] + "/" + item_data["image_name"])
+	texture_rect.texture = load("res://assets/images/" + item_data["category"] + "/" + item_data["image_name"])
 	item_quantity = 1
 
 	if item_data["stack_size"] == 1:
@@ -18,6 +16,10 @@ func _ready():
 	else:
 		label.visible = true
 		update_label_text(item_quantity)
+
+
+func set_item(objname):
+	item_name = objname
 
 
 func add_item_quantity(amount):

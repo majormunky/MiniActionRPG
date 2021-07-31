@@ -85,6 +85,7 @@ tile_data = PoolIntArray( 131082, 6, 0, 131091, 6, 0, 720905, 6, 0, 720921, 6, 0
 [node name="MainMenu" parent="." instance=ExtResource( 7 )]
 
 [node name="Dialog" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [connection signal="chest_opened" from="Items/Chest" to="." method="_on_Chest_chest_opened"]
 [connection signal="chest_opened" from="Items/Chest2" to="." method="_on_Chest_chest_opened"]

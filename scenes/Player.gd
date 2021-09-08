@@ -1,8 +1,20 @@
 extends KinematicBody2D
 
+enum {
+	MOVE,
+	DASH,
+	ATTACK,
+}
 var velocity = Vector2.ZERO
 var speed = 250
 var roll_vector = Vector2.ZERO
+var state = MOVE
+var is_dashing = false
+var dash_percent = 0.0
+var dash_direction = Vector2.ZERO
+var dash_start = Vector2.ZERO
+const DASH_SPEED = 16.0
+const DASH_DISTANCE = 64
 
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -11,14 +23,8 @@ onready var sword_hitbox = $HitboxPivot/SwordHitbox
 onready var interact_hitbox = $HitboxPivot/InteractHitbox
 onready var interact_hitbox_shape = $HitboxPivot/InteractHitbox/CollisionShape2D
 
-enum {
-	MOVE,
-	ROLL,
-	ATTACK,
-}
-var state = MOVE
-
 signal player_interacted
+
 
 func _ready():
 	anim_tree.active = true
@@ -30,14 +36,40 @@ func _physics_process(delta):
 			move_state(delta)
 		ATTACK:
 			attack_state()
-		ROLL:
-			pass
+		DASH:
+			dash_state(delta)
 
 
 func attack_state():
 	velocity = Vector2.ZERO
 	anim_state.travel("Attack")
 
+
+func dash_state(delta):
+	if is_dashing:
+		dash_percent += DASH_SPEED * delta
+		if dash_percent >= 1.0:
+			position = dash_start + (DASH_DISTANCE * dash_direction)
+			dash_percent = 0.0
+			dash_start = Vector2.ZERO
+			is_dashing = false
+			dash_direction = Vector2.ZERO
+			state = MOVE
+		else:
+			position = dash_start + (DASH_DISTANCE * dash_direction * dash_percent)
+	else:
+		dash_start = position
+		dash_direction.x
+		var x_move = Input.get_action_strength("walk_right") - Input.get_action_strength("walk_left")
+		var y_move = Input.get_action_strength("walk_down") - Input.get_action_strength("walk_up")
+		if x_move == 0:
+			dash_direction.y = y_move
+			dash_direction.x = 0
+		if y_move == 0:
+			dash_direction.x = x_move
+			dash_direction.y = 0
+		dash_percent = 0.0
+		is_dashing = true
 
 func move_state(delta):
 	var input = Vector2.ZERO
@@ -54,6 +86,9 @@ func move_state(delta):
 	else:
 		anim_state.travel("Idle")
 		velocity = Vector2.ZERO
+	
+	if Input.is_action_just_pressed("dash"):
+		state = DASH
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK

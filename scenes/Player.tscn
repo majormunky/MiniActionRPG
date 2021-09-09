@@ -707,5 +707,9 @@ position = Vector2( 13.4543, -0.105123 )
 shape = SubResource( 36 )
 disabled = true
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, -4 )
+collide_with_areas = true
+
 [editable path="HitboxPivot/SwordHitbox"]
 [editable path="HitboxPivot/InteractHitbox"]

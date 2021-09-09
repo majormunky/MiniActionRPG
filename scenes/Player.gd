@@ -13,8 +13,8 @@ var is_dashing = false
 var dash_percent = 0.0
 var dash_direction = Vector2.ZERO
 var dash_start = Vector2.ZERO
-const DASH_SPEED = 16.0
-const DASH_DISTANCE = 64
+const DASH_SPEED = 24.0
+const DASH_DISTANCE = 128
 
 onready var anim_player = $AnimationPlayer
 onready var anim_tree = $AnimationTree
@@ -22,6 +22,7 @@ onready var anim_state = anim_tree.get("parameters/playback")
 onready var sword_hitbox = $HitboxPivot/SwordHitbox
 onready var interact_hitbox = $HitboxPivot/InteractHitbox
 onready var interact_hitbox_shape = $HitboxPivot/InteractHitbox/CollisionShape2D
+onready var ray = $RayCast2D
 
 signal player_interacted
 
@@ -56,7 +57,18 @@ func dash_state(delta):
 			dash_direction = Vector2.ZERO
 			state = MOVE
 		else:
-			position = dash_start + (DASH_DISTANCE * dash_direction * dash_percent)
+			var new_position = dash_start + (DASH_DISTANCE * dash_direction * dash_percent)
+			ray.cast_to = new_position
+			ray.force_raycast_update()
+
+			if !ray.is_colliding():
+				position = new_position
+			else:
+				dash_percent = 0.0
+				dash_start = Vector2.ZERO
+				is_dashing = false
+				dash_direction = Vector2.ZERO
+				state = MOVE
 	else:
 		dash_start = position
 		dash_direction.x
